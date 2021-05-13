@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
     })
         .then(dbUserData => {
             if (!dbUserData) {
-                res.status(404).json({ messge: 'No user found with this id' });
+                res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
 
@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
-            email: req.body.username
+            username: req.body.username
         }
     })
         .then(dbUserData => {
@@ -79,7 +79,7 @@ router.post('/login', (req, res) => {
                 return;
             }
 
-            const validPassword = dbUSerData.checkPassword(req.body.password);
+            const validPassword = dbUserData.checkPassword(req.body.password);
 
             if (!validPassword) {
                 res.status(400).json({ message: 'Incorrect password!' });
@@ -88,7 +88,7 @@ router.post('/login', (req, res) => {
 
             req.session.save(() => {
                 req.session.user_id = dbUserData.id;
-                res.session.username = dbUserData.username;
+                req.session.username = dbUserData.username;
                 req.session.loggedIn = true;
 
                 res.json({ user: dbUserData, message: 'You are now logged in!'});
