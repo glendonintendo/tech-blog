@@ -13,13 +13,13 @@
     <div class="wrapper">
         <header>
             <h1>
-                <a href='/'>Tech Blog</a>
+                <a href='/' id="header">Tech Blog</a>
             </h1>
             
             <nav>
                 {{#if loggedIn}}
                 <a href="/dashboard">Dashboard</a>
-                <button id="logout">Logout</button>
+                <button id="logout" class="btn-no-style">Logout</button>
                 {{else}}
                 <a href="/login">Login</a>
                 {{/if}}
@@ -30,10 +30,6 @@
     <main>
         {{{body}}}
     </main>
-
-    <footer>
-        Derp.
-    </footer>
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
