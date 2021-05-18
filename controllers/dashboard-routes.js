@@ -29,7 +29,7 @@ router.get('/', withAuth, (req, res) => {
         ]
     })
         .then(dbPostData => {
-            const posts =dbPostData.map(post => post.get({ plain: true }));
+            const posts = dbPostData.map(post => post.get({ plain: true }));
             res.render('dashboard', { posts, loggedIn: true });
         })
         .catch(err => {
@@ -45,7 +45,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         },
         attributes: [
             'id',
-            'post_url',
+            'post_text',
             'title',
             'created_at'
         ],
@@ -70,7 +70,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
                 return;
             }
 
-            const post = dbPOstData.get({ plain: true });
+            const post = dbPostData.get({ plain: true });
 
             res.render('edit-post', {
                 post,
