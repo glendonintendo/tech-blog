@@ -47,10 +47,3 @@ const userdata = [
 const seedUsers = () => User.bulkCreate(userdata, {individualHooks: true});
 
 module.exports = seedUsers;
-
-
-[1, 2, 3].forEach(function(thing) {
-    console.log(thing);
-})
-
-$()
